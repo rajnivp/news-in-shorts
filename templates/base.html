@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>App</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+
+  <!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="static/favicon.ico">
+
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="static/css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="static/css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="static/css/bootstrap.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="static/css/flexslider.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="static/css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="static/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="static/js/respond.min.js"></script>
+	<![endif]-->
+
+{% block head %}{% endblock %}
+
+</head>
+
+<body>
+
+
+	<div id="gallery-page">
+		<a href="#" class="js-gallery-nav-toggle gallery-nav-toggle"><i></i></a>
+		<div id="gallery-aside" role="complementary" class="col-md-3 col-md-offset-1 " style="overflow-y: hidden;" >
+			<span id="gallery-logo"><a href="{{ url_for('index') }}"><img src="static/logo.png"></a></span>
+			<nav id="gallery-main-menu" role="navigation">
+				<ul class="sub-menu">
+					<li><a data-page="" href="">Home</a></li>
+					<li><a data-page="business" href="">Business</a></li>
+					<li><a data-page="entertainment" href="">Entertainment</a></li>
+					<li><a data-page="health" href="">Health</a></li>
+					<li><a data-page="science" href="">Science</a></li>
+					<li><a data-page="sports" href="">Sports</a></li>
+					<li><a data-page="technology" href="">Technology</a></li>
+					<li><a data-page="about" href="">About</a></li>
+				</ul>
+			</nav>
+			<div class="gallery-footer">
+				<p><small>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script><br> All rights reserved</span></small></p>
+				<ul>
+					<li><a href="#"><i class="icon-twitter2"></i></a></li>
+					<li><a href="#"><i class="icon-reddit"></i></a></li>
+					<li><a href="#"><i class="icon-github"></i></a></li>
+				</ul>
+			</div>
+
+		</div>
+
+{% block body %}{% endblock %}
+	</div>
+
+	<div class="modal">
+
+	</div>
+
+	<!-- jQuery -->
+	<script src="static/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="static/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="static/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="static/js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="static/js/jquery.flexslider-min.js"></script>
+	<!-- Sticky Kit -->
+	<script src="static/js/sticky-kit.min.js"></script>
+
+
+	<!-- MAIN JS -->
+	<script src="static/js/main.js"></script>
+
+</body>
+</html>
