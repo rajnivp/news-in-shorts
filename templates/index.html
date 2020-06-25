@@ -12,11 +12,11 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-10 col-md-offset-3 col-md-pull-3">
-							<form class="pull-right" role="search" style="float:right">
+							<form class="pull-right" id="search-form" role="search" style="float:right">
 
         						<input type="text" name="q" id="search-field" class="search-field" placeholder="Search">
 
-    							<button id="search-button" type="button"  class="search-button">Search</button>
+    							<button id="search-button" type="submit"  class="search-button">Search</button>
 							</form>
 							<span class="heading-meta">Read</span>
 
@@ -29,27 +29,13 @@
 					<div class="row content-holder">
 
 
-					{% for content in contents %}
 
-						<div class="container news-content " style="width:100%;">
-						  <div class="row">
-							<div class="col-sm-6 col-md-4" style="margin-top:10px;">
-							  <img  src="{{content['image']}}" class="img-responsive" alt="">
-							</div>
-							<div class="col-sm-6 col-md-5">
-							<span><small>{{content['time']}} </small> | <small> {{content['name']}} </small></span>
-							<h3>{{content['title']}}</h3>
-							<p>{{content['summary']}}</p>
-							<a href="{{content['url']}}" target=blank><small style="float:right;color:grey;opacity:0.8;">Read More at {{content['name']}}  </small></a>
-							</div>
-						  </div><br><br>
-						</div>
-
-					{% endfor %}
 
 					</div>
 				</div>
 			</div>
 		</div>
+
+
 
 {% endblock %}

@@ -8,32 +8,26 @@
 
     var about_html = `<div id="gallery-main" class="about-section"><div class="gallery-services gallery-work col-md-9 col-md-offset-2 ">
             <div class="container-fluid"><div class="row"><div class="col-md-9"><span class="heading-meta">What I Do?</span>
-            <h2 class="gallery-heading" >Here are some of my expertise</h2>
-            </div></div><div class="row"><div class="col-md-9 "><div class="gallery-feature">
-            <div class="gallery-text"><h3>Web Development</h3>
+            <h2 class="gallery-heading" >About Us</h2>
+            </div></div><div class="row"><div class="col-md-9 ">
+            <div class="gallery-text"><h3>Help &amp; Support</h3>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-            </div></div><div class="gallery-feature"><div class="gallery-text">
-            <h3>User Interface</h3>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-            </div></div><div class="gallery-feature "><div class="gallery-text">
-            <h3>Help &amp; Support</h3>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-            </div></div></div></div></div></div><div class="gallery-contact gallery-work col-md-9 col-md-offset-2 ">
+            </div></div></div></div></div><div class="gallery-contact gallery-work col-md-9 col-md-offset-2 ">
             <div class="container-fluid"><div class="row"><div class="col-md-9"><span class="heading-meta">Read</span>
             <h2 class="gallery-heading ">Get In Touch</h2></div></div>
             <div class="row"><div class="col-md-9"><div class="row"><div class="col-md-9 ">
-            <form action=""><div class="form-group"><input type="text" class="form-control" placeholder="Name"></div>
-            <div class="form-group"><input type="text" class="form-control" placeholder="Email"></div>
-            <div class="form-group"><input type="text" class="form-control" placeholder="Phone"></div>
+            <form id="message-form"><div class="form-group"><input type="text" class="form-control" id="name" placeholder="Name"></div>
+            <div class="form-group"><input type="text" id="email" class="form-control" placeholder="Email"></div>
+            <div class="form-group"><input type="text" id="phone" class="form-control" placeholder="Phone"></div>
             <div class="form-group"><textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-            </div><div class="form-group"><input type="submit" class="btn btn-primary btn-send-message" value="Send Message">
+            </div><div class="form-group"><input type="submit" id="send-button" class="btn btn-primary btn-send-message" value="Send Message">
             </div></form></div></div></div></div></div></div></div>`;
 
     var news_html = `<div id="gallery-main" class="news-section"><div class="gallery-blog gallery-work col-md-9 col-md-offset-1">
 				<div class="container-fluid"><div class="row"><div class="col-md-10 col-md-offset-3 col-md-pull-3">
-				<form class="pull-right" role="search" style="float:right">
+				<form class="pull-right" id="search-form" role="search" style="float:right">
 				<input type="text" name="q" id="search-field" class="search-field" placeholder="Search">
-				<button id="search-button" type="button" class="search-button">Search</button></form>
+				<button id="search-button" type="submit" class="search-button">Search</button></form>
 				<span class="heading-meta">Read</span><h2 class="gallery-heading">News across the globe</h2>
 				</div></div><div class="row content-holder"></div></div></div></div>`;
 
@@ -48,13 +42,19 @@
         data : {'start':start, 'end':end, 'query':q}
     }).done(function(data){
     if (data){
+        if (data.length==0){$(".content-holder").append($('<div class="container news-content" style="width:100%;"><h3>No content found</h3></div>'));}
         $.each(data , function(index,value){
-        var el = $('<div class="container news-content"><div class="row"><div class="col-sm-6 col-md-4" style="margin-top:10px;"><img src='+value.image+' class="img-responsive" alt=""></div><div class="col-sm-6 col-md-5"><span><small>'+value.time+' </small> | <small> '+value.name+' </small></span><h3>'+value.title+'</h3><p>'+value.summary+'</p><a href='+value.url+' target=blank><small style="color:grey;opacity:0.8;">Read More at '+value.name+'  </small></a></div></div><br><br></div>');
+        var el = $('<div class="container news-content" style="width:100%;"><div class="row"><div class="col-sm-6 col-md-4" style="margin-top:10px;"><img src='+value.image+' class="img-responsive" alt=""></div><div class="col-sm-6 col-md-5"><span><small>'+value.time+' </small> | <small> '+value.name+' </small></span><h3>'+value.title+'</h3><p>'+value.summary+'</p><a href='+value.url+' target=blank><small style="float:right;color:grey;opacity:0.8;">Read More at '+value.name+'  </small></a></div></div><br><br></div>');
         $(".content-holder").append(el);
                 })
             }
+    else{$(".content-holder").append($('<div class="container news-content" style="width:100%;"><h3>End of content</h3></div>'));}
         })
     };
+
+    $(window).on('load',function(){
+        if (window.location.pathname!='/about'){getPosts();}
+    });
 
     $(window).scroll(function() {
     if($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -64,7 +64,11 @@
         }
     });
 
-    $(document).ready(function(){
+    var activeClass = function(){ $(document).ready(function(){
+        if(window.location.pathname=='/search'){
+        let searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has('q') ){let param = searchParams.get('q');document.title=param;}
+        };
         $("#gallery-main-menu ul li").each(function(index,value){
             if ($(value).hasClass("gallery-active")){
                 $(value).removeClass("gallery-active");
@@ -76,40 +80,42 @@
             };
         })
     });
+    };
 
     $('.sub-menu li a').click(function(){
         if ($(this).attr('data-page')!= "about"){
         event.preventDefault();
         if (window.location.pathname=='/about'){$("#gallery-main").remove();$("#gallery-page").append($(news_html));}
         var page = $(this).attr('data-page');
-            if (!page){
-                page= "News App"
-                document.title = page;
-                history.pushState(null, "/", "/");
-            }
-            else{
+        if (!page){
+            page= "News App"
             document.title = page;
-            history.pushState(null, page, page);
-                }
-            $("#gallery-main-menu ul li.gallery-active").removeClass("gallery-active");
-            $(this).parent('li').addClass('gallery-active');
-            counter = 0;
-            $(".news-content").remove();
-            getPosts();
-            }
+            history.pushState(null, "/", "/");
+        }
         else{
-            $("#gallery-main").remove();$("#gallery-page").append($(about_html));
-            event.preventDefault();
-            document.title = 'about';
-            history.pushState(null, 'about', 'about');
-            counter = 0;
-            $("#gallery-main-menu ul li.gallery-active").removeClass("gallery-active");
-            $(this).parent('li').addClass('gallery-active');
+        document.title = page;
+        history.pushState(null, page, page);
             }
-        });
+        $('.news-content').remove();
+        $("#gallery-main-menu ul li.gallery-active").removeClass("gallery-active");
+        $(this).parent('li').addClass('gallery-active');
+        counter = 0;
+        getPosts();
+    }
+    else{
+        $("#gallery-main").remove();$("#gallery-page").append($(about_html));
+        event.preventDefault();
+        document.title = 'about';
+        history.pushState(null, 'about', 'about');
+        counter = 0;
+        $("#gallery-main-menu ul li.gallery-active").removeClass("gallery-active");
+        $(this).parent('li').addClass('gallery-active');
+        }
+    });
 
 
-    $('body').on('click','#search-button',function(){
+    $('body').on('submit','#search-form',function(){
+        event.preventDefault();
         var query = $("#search-field").val();
         if (query){
             counter = 0;
@@ -125,10 +131,40 @@
         }
     });
 
+    $('body').on('submit','#message-form',function(){
+        event.preventDefault();
+        var name = $("#name").val();
+        var email = $("#email").val();
+        var phone = $("#phone").val();
+        var message = $("#message").val();
+        if (name && email && phone && message){
+        $.ajax({
+            type : 'POST',
+            url : "/about",
+            data : {'name':name, 'email':email, 'phone':phone,'message':message}
+            }).done(function(data){
+            if (data){
+                alert(data);
+                }
+            })
+            $(document).on({ajaxStop:function(){
+        $("#name").val("");
+        $("#email").val("");
+        $("#phone").val("");
+        $("#message").val("");
+            }})
+        }
+    });
+
+    $(window).on('popstate', function() {
+        activeClass();
+        if(window.location.pathname=='/about'){$("#gallery-main").remove();$("#gallery-page").append($(about_html));}
+        else{$("#gallery-main").remove();$("#gallery-page").append($(news_html));getPosts();}
+    });
 
     $(document).on({
-        ajaxStart: function() { $("body").addClass("loading");    },
-         ajaxStop: function() { $("body").removeClass("loading"); }
+        ajaxStart: function() { $("body").addClass("loading");},
+        ajaxStop: function() { $("body").removeClass("loading"); }
     });
 
 
@@ -163,45 +199,6 @@
 		}
 
 	};
-
-	// Animations
-
-	var contentWayPoint = function() {
-		var i = 0;
-		$('.animate-box').waypoint( function( direction ) {
-
-			if( direction === 'down' && !$(this.element).hasClass('animated') ) {
-
-				i++;
-
-				$(this.element).addClass('item-animate');
-				setTimeout(function(){
-
-					$('body .animate-box.item-animate').each(function(k){
-						var el = $(this);
-						setTimeout( function () {
-							var effect = el.data('animate-effect');
-							if ( effect === 'fadeIn') {
-								el.addClass('fadeIn animated');
-							} else if ( effect === 'fadeInLeft') {
-								el.addClass('fadeInLeft animated');
-							} else if ( effect === 'fadeInRight') {
-								el.addClass('fadeInRight animated');
-							} else {
-								el.addClass('fadeInUp animated');
-							}
-
-							el.removeClass('item-animate');
-						},  k * 200, 'easeInOutExpo' );
-					});
-
-				}, 100);
-
-			}
-
-		} , { offset: '85%' } );
-	};
-
 
 	var burgerMenu = function() {
 
@@ -250,29 +247,6 @@
 
 	};
 
-	var sliderMain = function() {
-
-	  	$('#gallery-hero .flexslider').flexslider({
-			animation: "fade",
-			slideshowSpeed: 5000,
-			directionNav: true,
-			start: function(){
-				setTimeout(function(){
-					$('.slider-text').removeClass('animated fadeInUp');
-					$('.flex-active-slide').find('.slider-text').addClass('animated fadeInUp');
-				}, 500);
-			},
-			before: function(){
-				setTimeout(function(){
-					$('.slider-text').removeClass('animated fadeInUp');
-					$('.flex-active-slide').find('.slider-text').addClass('animated fadeInUp');
-				}, 500);
-			}
-
-	  	});
-
-	};
-
 	var stickyFunction = function() {
 
 		var h = $('.image-content').outerHeight();
@@ -313,11 +287,10 @@
 
 	// Document on load.
 	$(function(){
+	    activeClass();
 		fullHeight();
-		contentWayPoint();
 		burgerMenu();
 		mobileMenuOutsideClick();
-		sliderMain();
 		stickyFunction();
 	});
 
