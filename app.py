@@ -12,12 +12,13 @@ db.init_app(app)
 
 Query = [None]
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         start = int(request.form.get('start'))
         end = int(request.form.get('end'))
-        contents = news_pooling_cat(cat=None, page=end // 12)
+        contents = news_pooling(None, page=end // 12)
         return jsonify(contents)
     else:
         return render_template('index.html')
@@ -30,7 +31,7 @@ def news_categories(href):
         if request.method == 'POST':
             start = int(request.form.get('start'))
             end = int(request.form.get('end'))
-            contents = news_pooling_cat(cat=href, page=end // 12)
+            contents = news_pooling(href, page=end // 12)
             return jsonify(contents)
         else:
             return render_template('index.html')
@@ -51,11 +52,11 @@ def search():
         end = int(request.form.get('end'))
         search_query = request.form.get('query')
         if search_query:
-            contents = news_pooling(search_query, end // 12)
+            contents = news_pooling(search_query, end // 12, search=True)
         elif Query[0]:
-            contents = news_pooling(Query[0], (end + 12) // 12)
+            contents = news_pooling(Query[0], (end + 12) // 12, search=True)
         else:
-            contents = news_pooling_cat(cat=None, page=(end + 12) // 12)
+            contents = news_pooling(None, page=(end + 12) // 12)
 
         return jsonify(contents)
 
@@ -81,4 +82,3 @@ def about():
 
 if __name__ == "__main__":
     app.run()
-

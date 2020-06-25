@@ -3,8 +3,7 @@ from newspaper import Article
 from multiprocessing.dummy import Pool
 import os
 
-
-news_api_key=os.getenv('API_KEY')
+news_api_key = os.getenv('API_KEY')
 
 newsapi = NewsApiClient(api_key=news_api_key)
 
@@ -51,21 +50,23 @@ def news_processing(news):
         return False
 
 
-def news_pooling(query, page=1):
-    news_list = fetch_news(query, page)
+def news_pooling(query, page=1, search=False):
+    if search:
+        news_list = fetch_news(query, page)
+    else:
+        news_list = get_top_news(query, page)
     with Pool(10) as pool:
         res = pool.map(news_processing, news_list)
         pool.close()
         pool.join()
 
-    return res
+    news_set = set()
+    new_news_list = []
+    res = [value for value in res if value]
+    for news in res:
+        t = news['title']
+        if t not in news_set:
+            news_set.add(t)
+            new_news_list.append(news)
 
-
-def news_pooling_cat(cat, page=1):
-    news_list = get_top_news(cat, page)
-    with Pool(10) as pool:
-        res = pool.map(news_processing, news_list)
-        pool.close()
-        pool.join()
-
-    return res
+    return new_news_list
