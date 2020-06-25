@@ -44,8 +44,9 @@
     if (data){
         if (data.length==0){$(".content-holder").append($('<div class="container news-content" style="width:100%;"><h3>No content found</h3></div>'));}
         $.each(data , function(index,value){
+        if (value.title!="undefined"){
         var el = $('<div class="container news-content" style="width:100%;"><div class="row"><div class="col-sm-6 col-md-4" style="margin-top:10px;"><img src='+value.image+' class="img-responsive" alt=""></div><div class="col-sm-6 col-md-5"><span><small>'+value.time+' </small> | <small> '+value.name+' </small></span><h3>'+value.title+'</h3><p>'+value.summary+'</p><a href='+value.url+' target=blank><small style="float:right;color:grey;opacity:0.8;">Read More at '+value.name+'  </small></a></div></div><br><br></div>');
-        $(".content-holder").append(el);
+        $(".content-holder").append(el);}
                 })
             }
     else{$(".content-holder").append($('<div class="container news-content" style="width:100%;"><h3>End of content</h3></div>'));}
@@ -57,6 +58,14 @@
     });
 
     $(window).scroll(function() {
+    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+        if (window.location.pathname != "/about"){
+            getPosts();
+            }
+        }
+    });
+
+    $(window).on('touchmove',function() {
     if($(window).scrollTop() == $(document).height() - $(window).height()) {
         if (window.location.pathname != "/about"){
             getPosts();
