@@ -57,21 +57,21 @@
         if (window.location.pathname!='/about'){getPosts();}
     });
 
-    $(window).scroll(function() {
-    if($(window).scrollTop() == $(document).height() - $(window).height()) {
-        if (window.location.pathname != "/about"){
-            getPosts();
-            }
-        }
-    });
+var addition_constant = 0;
+$(document.body).on('touchmove', onScroll); // for mobile
+$(window).on('scroll', onScroll);
 
-    $(document.body).on('touchmove',function() {
-    if($(window).scrollTop() == $(document).height() - $(window).height()) {
-        if (window.location.pathname != "/about"){
-            getPosts();
-            }
-        }
-    });
+function onScroll() {
+  var addition = ($(window).scrollTop() + window.innerHeight);
+
+  var scrollHeight = (document.body.scrollHeight - 1);
+  if (addition > scrollHeight && addition_constant < addition) {
+
+    addition_constant = addition;
+
+    getPosts();
+  }
+}
 
     var activeClass = function(){ $(document).ready(function(){
         if(window.location.pathname=='/search'){
