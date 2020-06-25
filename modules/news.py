@@ -59,7 +59,6 @@ def news_pooling(query, page=1):
         pool.join()
 
     if res:
-        res = [r for r in res if (r!='undefined' or r is not None)]
         try:
             res = [i for i in res if i if 'yimg' not in i['image']]
         except TypeError:
@@ -75,7 +74,6 @@ def news_pooling_cat(cat, page=1):
         pool.join()
 
     if res:
-        res = [r for r in res if (r['title']!='undefined' or r is not None)]
         try:
             res = [i for i in res if i if 'yimg' not in i['image']]
         except TypeError:
@@ -83,3 +81,5 @@ def news_pooling_cat(cat, page=1):
 
     return res
 
+res=news_pooling_cat(None,1)
+print(res)
