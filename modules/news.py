@@ -58,11 +58,6 @@ def news_pooling(query, page=1):
         pool.close()
         pool.join()
 
-    if res:
-        try:
-            res = [i for i in res if i if 'yimg' not in i['image']]
-        except TypeError:
-            pass
     return res
 
 
@@ -73,13 +68,4 @@ def news_pooling_cat(cat, page=1):
         pool.close()
         pool.join()
 
-    if res:
-        try:
-            res = [i for i in res if i if 'yimg' not in i['image']]
-        except TypeError:
-            pass
-
     return res
-
-res=news_pooling_cat(None,1)
-print(res)
