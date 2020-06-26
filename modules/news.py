@@ -9,7 +9,8 @@ newsapi = NewsApiClient(api_key=news_api_key)
 
 
 def fetch_news(query, page=1):
-    top_headlines = newsapi.get_everything(q=query,
+    top_headlines = newsapi.get_everything(language='en',
+                                           q=query,
                                            page_size=8,
                                            page=page,
                                            sort_by="relevancy"
@@ -21,9 +22,10 @@ def fetch_news(query, page=1):
 
 
 def get_top_news(category, page):
-    top_news = newsapi.get_top_headlines(page_size=8,
+    top_news = newsapi.get_top_headlines(language='en',
+                                         page_size=8,
                                          category=category,
-                                         page=page)
+                                         page=page,)
     results = top_news['articles']
 
     return results
