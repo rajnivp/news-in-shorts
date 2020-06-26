@@ -6,15 +6,15 @@
 	var quantity = 12;
 	var q = null;
 
-    var about_html = `<div id="gallery-main" class="about-section"><div class="gallery-services gallery-work col-md-9 col-md-offset-2 ">
+    var about_html = `<div id="articles-main" class="about-section"><div class="articles-services articles-work col-md-9 col-md-offset-2 ">
             <div class="container-fluid"><div class="row"><div class="col-md-9"><span class="heading-meta">What I Do?</span>
-            <h2 class="gallery-heading" >About Us</h2>
+            <h2 class="articles-heading" >About Us</h2>
             </div></div><div class="row"><div class="col-md-9 ">
-            <div class="gallery-text"><h3>Help &amp; Support</h3>
+            <div class="articles-text"><h3>Help &amp; Support</h3>
             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
-            </div></div></div></div></div><div class="gallery-contact gallery-work col-md-9 col-md-offset-2 ">
+            </div></div></div></div></div><div class="articles-contact articles-work col-md-9 col-md-offset-2 ">
             <div class="container-fluid"><div class="row"><div class="col-md-9"><span class="heading-meta">Read</span>
-            <h2 class="gallery-heading ">Get In Touch</h2></div></div>
+            <h2 class="articles-heading ">Get In Touch</h2></div></div>
             <div class="row"><div class="col-md-9"><div class="row"><div class="col-md-9 ">
             <form id="message-form"><div class="form-group"><input type="text" class="form-control" id="name" placeholder="Name"></div>
             <div class="form-group"><input type="text" id="email" class="form-control" placeholder="Email"></div>
@@ -23,12 +23,12 @@
             </div><div class="form-group"><input type="submit" id="send-button" class="btn btn-primary btn-send-message" value="Send Message">
             </div></form></div></div></div></div></div></div></div>`;
 
-    var news_html = `<div id="gallery-main" class="news-section"><div class="gallery-blog gallery-work col-md-9 col-md-offset-1">
+    var news_html = `<div id="articles-main" class="news-section"><div class="articles-blog articles-work col-md-9 col-md-offset-1">
 				<div class="container-fluid"><div class="row"><div class="col-md-10 col-md-offset-3 col-md-pull-3">
 				<form class="pull-right" id="search-form" role="search" style="float:right">
 				<input type="text" name="q" id="search-field" class="search-field" placeholder="Search">
 				<button id="search-button" type="submit" class="search-button">Search</button></form>
-				<span class="heading-meta">Read</span><h2 class="gallery-heading">News across the globe</h2>
+				<span class="heading-meta">Read</span><h2 class="articles-heading">News across the globe</h2>
 				</div></div><div class="row content-holder"></div></div></div></div>`;
 
 
@@ -78,12 +78,12 @@
         let searchParams = new URLSearchParams(window.location.search);
         if (searchParams.has('q') ){let param = searchParams.get('q');document.title=param;}
         };
-        $("#gallery-main-menu ul li").each(function(index,value){
-            if ($(value).hasClass("gallery-active")){
-                $(value).removeClass("gallery-active");
+        $("#articles-main-menu ul li").each(function(index,value){
+            if ($(value).hasClass("articles-active")){
+                $(value).removeClass("articles-active");
             };
             if (('/'+$(value).children().attr('data-page'))==window.location.pathname){
-                $(value).addClass("gallery-active");
+                $(value).addClass("articles-active");
                 if (window.location.pathname=='/'){document.title="News App Home";}
                 else{document.title=$(value).children().attr('data-page');}
             };
@@ -94,7 +94,7 @@
     $('.sub-menu li a').click(function(){
         if ($(this).attr('data-page')!= "about"){
         event.preventDefault();
-        if (window.location.pathname=='/about'){$("#gallery-main").remove();$("#gallery-page").append($(news_html));}
+        if (window.location.pathname=='/about'){$("#articles-main").remove();$("#articles-page").append($(news_html));}
         var page = $(this).attr('data-page');
         if (!page){
             page= "News App"
@@ -106,19 +106,19 @@
         history.pushState(null, page, page);
             }
         $('.news-content').remove();
-        $("#gallery-main-menu ul li.gallery-active").removeClass("gallery-active");
-        $(this).parent('li').addClass('gallery-active');
+        $("#articles-main-menu ul li.articles-active").removeClass("articles-active");
+        $(this).parent('li').addClass('articles-active');
         counter = 0;
         getPosts();
     }
     else{
-        $("#gallery-main").remove();$("#gallery-page").append($(about_html));
+        $("#articles-main").remove();$("#articles-page").append($(about_html));
         event.preventDefault();
         document.title = 'about';
         history.pushState(null, 'about', 'about');
         counter = 0;
-        $("#gallery-main-menu ul li.gallery-active").removeClass("gallery-active");
-        $(this).parent('li').addClass('gallery-active');
+        $("#articles-main-menu ul li.articles-active").removeClass("articles-active");
+        $(this).parent('li').addClass('articles-active');
         }
     });
 
@@ -130,7 +130,7 @@
             counter = 0;
             $(".news-content").remove();
             $("#search-field").val("");
-            $("#gallery-main-menu ul li.gallery-active").removeClass("gallery-active");
+            $("#articles-main-menu ul li.articles-active").removeClass("articles-active");
             q = query;
             document.title = q;
             var url = q.replace(/\s{2,}/g, ' ');
@@ -167,8 +167,8 @@
 
     $(window).on('popstate', function() {
         activeClass();
-        if(window.location.pathname=='/about'){$("#gallery-main").remove();$("#gallery-page").append($(about_html));}
-        else{$("#gallery-main").remove();$("#gallery-page").append($(news_html));getPosts();}
+        if(window.location.pathname=='/about'){$("#articles-main").remove();$("#articles-page").append($(about_html));}
+        else{$("#articles-main").remove();$("#articles-page").append($(news_html));getPosts();}
     });
 
     $(document).on({
@@ -211,7 +211,7 @@
 
 	var burgerMenu = function() {
 
-		$('.js-gallery-nav-toggle').on('click', function(event){
+		$('.js-articles-nav-toggle').on('click', function(event){
 			event.preventDefault();
 			var $this = $(this);
 
@@ -232,13 +232,13 @@
 	var mobileMenuOutsideClick = function() {
 
 		$(document).click(function (e) {
-	    var container = $("#gallery-aside, .js-gallery-nav-toggle");
+	    var container = $("#articles-aside, .js-articles-nav-toggle");
 	    if (!container.is(e.target) && container.has(e.target).length === 0) {
 
 	    	if ( $('body').hasClass('offcanvas') ) {
 
     			$('body').removeClass('offcanvas');
-    			$('.js-gallery-nav-toggle').removeClass('active');
+    			$('.js-articles-nav-toggle').removeClass('active');
 
 	    	}
 
@@ -249,7 +249,7 @@
 			if ( $('body').hasClass('offcanvas') ) {
 
     			$('body').removeClass('offcanvas');
-    			$('.js-gallery-nav-toggle').removeClass('active');
+    			$('.js-articles-nav-toggle').removeClass('active');
 
 	    	}
 		});

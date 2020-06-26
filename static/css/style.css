@@ -62,12 +62,12 @@ figure {
   color: #fff;
   background: #F75940; }
 
-#gallery-page {
+#articles-page {
   width: 100%;
   overflow: hidden;
   position: relative; }
 
-#gallery-aside {
+#articles-aside {
   padding-top: 3em;
   padding-bottom: 40px;
   padding-left: 3em;
@@ -84,10 +84,10 @@ figure {
   -o-transition: 0.5s;
   transition: 0.5s; }
   @media screen and (max-width: 1200px) {
-    #gallery-aside {
+    #articles-aside {
       width: 30%; } }
   @media screen and (max-width: 768px) {
-    #gallery-aside {
+    #articles-aside {
       width: 270px;
       -moz-transform: translateX(-270px);
       -webkit-transform: translateX(-270px);
@@ -95,7 +95,7 @@ figure {
       -o-transform: translateX(-270px);
       transform: translateX(-270px);
       padding-top: 4em; } }
-  #gallery-aside #gallery-logo {
+  #articles-aside #articles-logo {
     text-align: right;
     font-weight: 400;
     font-size: 22px;
@@ -104,9 +104,9 @@ figure {
     display: block;
     width: 100%; }
     @media screen and (max-width: 768px) {
-      #gallery-aside #gallery-logo {
+      #articles-aside #articles-logo {
         margin-bottom: 1em; } }
-    #gallery-aside #gallery-logo a {
+    #articles-aside #articles-logo a {
       display: inline-block;
       text-align: center;
 
@@ -114,18 +114,18 @@ figure {
       color: #fff;
       letter-spacing: 10px;
       padding-right: .3em; }
-      #gallery-aside #gallery-logo a span {
+      #articles-aside #articles-logo a span {
         display: block;
         margin-bottom: 5px;
         text-align: center; }
-  #gallery-aside #gallery-main-menu ul {
+  #articles-aside #articles-main-menu ul {
     text-align: right;
     margin: 0;
     padding: 0; }
     @media screen and (max-width: 768px) {
-      #gallery-aside #gallery-main-menu ul {
+      #articles-aside #articles-main-menu ul {
         margin: 0 0 2em 0; } }
-    #gallery-aside #gallery-main-menu ul li {
+    #articles-aside #articles-main-menu ul li {
       margin: 0 0 10px 0;
       padding: 0;
       list-style: none;
@@ -133,7 +133,7 @@ figure {
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 1px; }
-      #gallery-aside #gallery-main-menu ul li a {
+      #articles-aside #articles-main-menu ul li a {
         color: rgba(0, 0, 0, 0.4);
         text-decoration: none;
         position: relative;
@@ -142,7 +142,7 @@ figure {
         -webkit-transition: 0.3s;
         -o-transition: 0.3s;
         transition: 0.3s; }
-        #gallery-aside #gallery-main-menu ul li a:after {
+        #articles-aside #articles-main-menu ul li a:after {
           content: "";
           position: absolute;
           height: 1px;
@@ -161,26 +161,26 @@ figure {
           -ms-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        #gallery-aside #gallery-main-menu ul li a:hover {
+        #articles-aside #articles-main-menu ul li a:hover {
           text-decoration: none;
           color: black; }
-          #gallery-aside #gallery-main-menu ul li a:hover:after {
+          #articles-aside #articles-main-menu ul li a:hover:after {
             visibility: visible;
             -webkit-transform: scaleX(1);
             -moz-transform: scaleX(1);
             -ms-transform: scaleX(1);
             -o-transform: scaleX(1);
             transform: scaleX(1); }
-      #gallery-aside #gallery-main-menu ul li.gallery-active a {
+      #articles-aside #articles-main-menu ul li.articles-active a {
         color: #000; }
-        #gallery-aside #gallery-main-menu ul li.gallery-active a:after {
+        #articles-aside #articles-main-menu ul li.articles-active a:after {
           visibility: visible;
           -webkit-transform: scaleX(1);
           -moz-transform: scaleX(1);
           -ms-transform: scaleX(1);
           -o-transform: scaleX(1);
           transform: scaleX(1); }
-  #gallery-aside .gallery-footer {
+  #articles-aside .articles-footer {
     position: absolute;
     bottom: 40px;
     right: 1.5em;
@@ -191,43 +191,43 @@ figure {
     color: rgba(0, 0, 0, 0.6);
     padding: 0 20px; }
     @media screen and (max-width: 768px) {
-      #gallery-aside .gallery-footer {
+      #articles-aside .articles-footer {
         position: relative;
         bottom: 0; } }
-    #gallery-aside .gallery-footer span {
+    #articles-aside .articles-footer span {
       display: block; }
-    #gallery-aside .gallery-footer ul {
+    #articles-aside .articles-footer ul {
       padding: 0;
       margin: 0; }
-      #gallery-aside .gallery-footer ul li {
+      #articles-aside .articles-footer ul li {
         padding: 0;
         margin: 0;
         display: inline;
         list-style: none; }
-        #gallery-aside .gallery-footer ul li a {
+        #articles-aside .articles-footer ul li a {
           color: rgba(0, 0, 0, 0.7);
           padding: 4px; }
-          #gallery-aside .gallery-footer ul li a:hover, #gallery-aside .gallery-footer ul li a:active, #gallery-aside .gallery-footer ul li a:focus {
+          #articles-aside .articles-footer ul li a:hover, #articles-aside .articles-footer ul li a:active, #articles-aside .articles-footer ul li a:focus {
             text-decoration: none;
             outline: none;
             color: #F75940; }
 
-#gallery-main {
+#articles-main {
   width: 80%;
   float: right;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
   @media screen and (max-width: 1200px) {
-    #gallery-main {
+    #articles-main {
       width: 70%; } }
   @media screen and (max-width: 768px) {
-    #gallery-main {
+    #articles-main {
       width: 100%; } }zz
 
 body.offcanvas {
   overflow-x: hidden; }
-  body.offcanvas #gallery-aside {
+  body.offcanvas #articles-aside {
     -moz-transform: translateX(0);
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
@@ -237,7 +237,7 @@ body.offcanvas {
     background: #fff;
     z-index: 999;
     position: fixed; }
-  body.offcanvas #gallery-main, body.offcanvas .gallery-nav-toggle {
+  body.offcanvas #articles-main, body.offcanvas .articles-nav-toggle {
     top: 0;
     -moz-transform: translateX(270px);
     -webkit-transform: translateX(270px);
@@ -245,22 +245,22 @@ body.offcanvas {
     -o-transform: translateX(270px);
     transform: translateX(270px); }
 
-.gallery-blog,
-.gallery-work,
-.gallery-about,
-.gallery-services,
-.gallery-contact {
+.articles-blog,
+.articles-work,
+.articles-about,
+.articles-services,
+.articles-contact {
   padding-top: 4em;
   padding-bottom: 9em;
   clear: both;
   width: 100%;
   display: block; }
   @media screen and (max-width: 768px) {
-    .gallery-blog,
-    .gallery-work,
-    .gallery-about,
-    .gallery-services,
-    .gallery-contact {
+    .articles-blog,
+    .articles-work,
+    .articles-about,
+    .articles-services,
+    .articles-contact {
       padding-top: 5em;
       padding-bottom: 8em; } }
 
@@ -271,17 +271,17 @@ body.offcanvas {
   background-repeat: no-repeat;
   position: relative; }
 
-.gallery-heading {
+.articles-heading {
   font-size: 18px;
   margin-bottom: 4em;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 5px;
   line-height: 1.8; }
-  .gallery-heading span {
+  .articles-heading span {
     display: block; }
   @media screen and (max-width: 768px) {
-    .gallery-heading {
+    .articles-heading {
       margin-bottom: 1em; } }
 
 .heading-meta {
@@ -560,11 +560,11 @@ body.offcanvas {
     -ms-border-radius: 30px;
     border-radius: 30px; }
 
-.gallery-social {
+.articles-social {
   padding: 0;
   margin: 0;
   text-align: center; }
-  .gallery-social li {
+  .articles-social li {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -572,7 +572,7 @@ body.offcanvas {
     display: inline-block;
     zoom: 1;
     *display: inline; }
-    .gallery-social li a {
+    .articles-social li a {
       font-size: 22px;
       color: #000;
       padding: 10px;
@@ -585,11 +585,11 @@ body.offcanvas {
       -ms-border-radius: 7px;
       border-radius: 7px; }
       @media screen and (max-width: 768px) {
-        .gallery-social li a {
+        .articles-social li a {
           padding: 10px 8px; } }
-      .gallery-social li a:hover {
+      .articles-social li a:hover {
         color: #F75940; }
-      .gallery-social li a:hover, .gallery-social li a:active, .gallery-social li a:focus {
+      .articles-social li a:hover, .articles-social li a:active, .articles-social li a:focus {
         outline: none;
         text-decoration: none;
         color: #F75940; }
@@ -601,17 +601,17 @@ body.offcanvas {
     #map {
       height: 200px; } }
 
-.gallery-more-contact {
+.articles-more-contact {
   background: #fafafa;
   border: 1px solid red; }
 
-.gallery-feature {
+.articles-feature {
   text-align: left;
   width: 100%;
   float: left;
   margin-bottom: 40px;
   position: relative; }
-  .gallery-feature .gallery-icon {
+  .articles-feature .articles-icon {
     position: absolute;
     top: 0;
     left: 0;
@@ -624,42 +624,42 @@ body.offcanvas {
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
     border-radius: 2px; }
-    .gallery-feature .gallery-icon i {
+    .articles-feature .articles-icon i {
       display: table-cell;
       vertical-align: middle;
       color: #F75940;
       font-size: 40px;
       height: 100px; }
       @media screen and (max-width: 1200px) {
-        .gallery-feature .gallery-icon i {
+        .articles-feature .articles-icon i {
           font-size: 40px; } }
-  .gallery-feature .gallery-text {
+  .articles-feature .articles-text {
     padding-left: 120px;
     width: 100%; }
-    .gallery-feature .gallery-text h2, .gallery-feature .gallery-text h3 {
+    .articles-feature .articles-text h2, .articles-feature .articles-text h3 {
       margin: 0;
       padding: 0; }
-    .gallery-feature .gallery-text h3 {
+    .articles-feature .articles-text h3 {
       font-weight: 500;
       margin-bottom: 20px;
       color: rgba(0, 0, 0, 0.7);
       font-size: 14px;
       letter-spacing: 3px;
       text-transform: uppercase; }
-  .gallery-feature.gallery-feature-sm .gallery-text {
+  .articles-feature.articles-feature-sm .articles-text {
     margin-top: 30px; }
-  .gallery-feature.gallery-feature-sm .gallery-icon i {
+  .articles-feature.articles-feature-sm .articles-icon i {
     color: #F75940;
     font-size: 40px; }
     @media screen and (max-width: 1200px) {
-      .gallery-feature.gallery-feature-sm .gallery-icon i {
+      .articles-feature.articles-feature-sm .articles-icon i {
         font-size: 28px; } }
 
-.gallery-feature-lg .gallery-text h2, .gallery-feature-lg .gallery-text h3 {
+.articles-feature-lg .articles-text h2, .articles-feature-lg .articles-text h3 {
   margin: 0;
   padding: 0; }
 
-.gallery-feature-lg .gallery-text h3 {
+.articles-feature-lg .articles-text h3 {
   font-weight: 500;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.8);
@@ -667,7 +667,7 @@ body.offcanvas {
   letter-spacing: .2em;
   text-transform: uppercase; }
 
-.gallery-bg-color {
+.articles-bg-color {
   background: #fafafa;
   position: relative; }
 
@@ -808,17 +808,17 @@ body.offcanvas {
 #message {
   height: 130px; }
 
-.gallery-nav-toggle {
+.articles-nav-toggle {
   cursor: pointer;
   text-decoration: none; }
-  .gallery-nav-toggle.active i::before, .gallery-nav-toggle.active i::after {
+  .articles-nav-toggle.active i::before, .articles-nav-toggle.active i::after {
     background: #000; }
-  .gallery-nav-toggle.dark.active i::before, .gallery-nav-toggle.dark.active i::after {
+  .articles-nav-toggle.dark.active i::before, .articles-nav-toggle.dark.active i::after {
     background: #000; }
-  .gallery-nav-toggle:hover, .gallery-nav-toggle:focus, .gallery-nav-toggle:active {
+  .articles-nav-toggle:hover, .articles-nav-toggle:focus, .articles-nav-toggle:active {
     outline: none;
     border-bottom: none !important; }
-  .gallery-nav-toggle i {
+  .articles-nav-toggle i {
     position: relative;
     display: -moz-inline-stack;
     display: inline-block;
@@ -834,7 +834,7 @@ body.offcanvas {
     -webkit-transition: all .2s ease-out;
     -o-transition: all .2s ease-out;
     transition: all .2s ease-out; }
-    .gallery-nav-toggle i::before, .gallery-nav-toggle i::after {
+    .articles-nav-toggle i::before, .articles-nav-toggle i::after {
       content: '';
       width: 30px;
       height: 2px;
@@ -844,35 +844,35 @@ body.offcanvas {
       -webkit-transition: 0.2s;
       -o-transition: 0.2s;
       transition: 0.2s; }
-  .gallery-nav-toggle.dark i {
+  .articles-nav-toggle.dark i {
     position: relative;
     color: #000;
     background: #000;
     -webkit-transition: all .2s ease-out;
     -o-transition: all .2s ease-out;
     transition: all .2s ease-out; }
-    .gallery-nav-toggle.dark i::before, .gallery-nav-toggle.dark i::after {
+    .articles-nav-toggle.dark i::before, .articles-nav-toggle.dark i::after {
       background: #000;
       -webkit-transition: 0.2s;
       -o-transition: 0.2s;
       transition: 0.2s; }
 
-.gallery-nav-toggle i::before {
+.articles-nav-toggle i::before {
   top: -7px; }
 
-.gallery-nav-toggle i::after {
+.articles-nav-toggle i::after {
   bottom: -7px; }
 
-.gallery-nav-toggle:hover i::before {
+.articles-nav-toggle:hover i::before {
   top: -10px; }
 
-.gallery-nav-toggle:hover i::after {
+.articles-nav-toggle:hover i::after {
   bottom: -10px; }
 
-.gallery-nav-toggle.active i {
+.articles-nav-toggle.active i {
   background: transparent; }
 
-.gallery-nav-toggle.active i::before {
+.articles-nav-toggle.active i::before {
   top: 0;
   -webkit-transform: rotateZ(45deg);
   -moz-transform: rotateZ(45deg);
@@ -880,7 +880,7 @@ body.offcanvas {
   -o-transform: rotateZ(45deg);
   transform: rotateZ(45deg); }
 
-.gallery-nav-toggle.active i::after {
+.articles-nav-toggle.active i::after {
   bottom: 0;
   -webkit-transform: rotateZ(-45deg);
   -moz-transform: rotateZ(-45deg);
@@ -888,7 +888,7 @@ body.offcanvas {
   -o-transform: rotateZ(-45deg);
   transform: rotateZ(-45deg); }
 
-.gallery-nav-toggle {
+.articles-nav-toggle {
   position: fixed;
   left: -4px;
   top: 0px;
@@ -901,7 +901,7 @@ body.offcanvas {
   -o-transition: 0.5s;
   transition: 0.5s; }
   @media screen and (max-width: 768px) {
-    .gallery-nav-toggle {
+    .articles-nav-toggle {
       opacity: 1;
       visibility: visible; } }
 
